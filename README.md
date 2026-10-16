@@ -2,41 +2,32 @@
 
 **TS-SGNet: A Transductive Semi-Supervised Superpixel Graph Network for Geospatial Classification under Label Scarcity and Class Imbalance**
 
-This repository provides the Python source code for TS-SGNet and synthetic examples of the expected input-file structure. The four original hydrocarbon exploration datasets are confidential proprietary data and are neither public nor available from the authors upon request.
-
-## Method
-
-TS-SGNet combines attribute-coordinate decoupled representation, multiscale superpixel region graph propagation, and EMA-based quality-quantity-balanced pseudo-label selection.
+This repository publishes the TS-SGNet core network definition and the primary model and optimisation settings reported in the manuscript. The training and evaluation entry point is provided separately as a runnable Python ZIP application (`reproduce.pyz`).
 
 ## Repository contents
 
-- `TS_SGNet.py`: model architecture, training, evaluation, and spatial mapping.
-- `requirements.txt`: Python package dependencies.
-- `example_data/`: entirely synthetic illustrative data and boundaries.
-- `validate_example_data.py`: checks synthetic data schemas.
-- `DATA_FORMAT.md`: fields and input requirements.
+- **[TS_SGNet.py](TS_SGNet.py)**: the core ACDR, multiscale region graph, attention fusion, and classification architecture. Its top-level settings follow the paper's main parameter table.
+- **[reproduce.pyz](reproduce.pyz)**: runnable training, evaluation, and mapping pipeline. This archive requires `TS_SGNet.py` in the same directory.
+- **[requirements.txt](requirements.txt)**: Python dependencies (install compatible PyTorch and PyTorch Geometric versions).
+- **[DATA_FORMAT.md](DATA_FORMAT.md)** and **[example_data/](example_data/)**: data schemas and entirely fabricated samples.
 
-## Data and code availability
-
-**Code:** This repository provides the TS-SGNet Python source code.
-
-**Data:** Original field observations, well locations, labels, geoscientific attributes, spatial grids, exploration boundaries, and reserve polygons are confidential. They cannot be publicly released or provided upon request. The examples in this repository are fabricated solely to demonstrate the input format. They are not anonymized records, transformed originals, or samples from any actual study area. The synthetic data cannot reproduce the numerical findings in the paper.
-
-## Setup
-
-Use Python 3.10 or newer and install mutually compatible PyTorch and PyTorch Geometric versions for your environment:
+## Execution
 
 ```bash
 pip install -r requirements.txt
-python validate_example_data.py
+python reproduce.pyz
 ```
 
-For a format-only demonstration, run `python TS_SGNet.py`. The script retains the original lengthy training configuration. A successful execution on artificial data does **not** validate the scientific results.
+By default, the application reads the artificial samples in `example_data`. To use data that you are authorised to access, set `TSSGNET_DATA_DIR` to the directory containing the specified input filenames.
 
-With data you are authorized to access, set `TSSGNET_DATA_DIR` to the folder containing the expected input filenames. **Do not commit restricted inputs or model outputs derived from them.**
+The ZIP application is a binary-format distribution, **not an encryption or access-control mechanism**. Its contents can be extracted using standard tools; the source of the full training pipeline is not separately published as a plain `.py` file in the current repository view.
 
-Refer to [DATA_FORMAT.md](DATA_FORMAT.md) for the complete schema.
+## Data and code availability
 
-## Citation
+The four original hydrocarbon exploration datasets (well records, spatial coordinates, labels, attribute rasters, and actual study-area/reserve boundaries) are confidential proprietary materials. They are neither public nor available upon request. The example files are wholly synthetic and preserve only the input schema. They do **not** reproduce the paper's experimental metrics or geographic patterns.
 
-TS-SGNet: A Transductive Semi-Supervised Superpixel Graph Network for Geospatial Classification under Label Scarcity and Class Imbalance. Publication details pending.
+The readable core architecture source and an executable training workflow are available in this repository. A runnable archive together with synthetic data is **not** sufficient to independently reproduce the empirical results obtained from restricted datasets.
+
+## Version history
+
+GitHub's commit history may retain earlier versions of source files; replacing a file on `main` does not erase its historical content.

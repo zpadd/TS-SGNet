@@ -1,0 +1,20 @@
+# Confidential local inputs must not be committed
+private_data/
+confidential/
+raw_data/
+secrets/
+*.csv
+!example_data/*.csv
+*.pt
+*.pth
+*.ckpt
+*.pkl
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+outputs/
+results/
+*_result/
+*_results/
+.DS_Store

@@ -1,6 +1,6 @@
 # TS-SGNet
 
-**TS-SGNet: A Transductive Semi-Supervised Superpixel Graph Network for Geospatial Classification under Label Scarcity and Class Imbalance**
+**TS-SGNet: A Transductive Semi-Supervised Multiscale Superpixel Graph Network for Hydrocarbon Prospectivity Mapping with Sparse and Imbalanced Well Labels**
 
 This repository publishes the TS-SGNet core network definition and the primary model and optimisation settings reported in the manuscript. The training and evaluation entry point is provided separately as a runnable Python ZIP application (`reproduce.pyz`).
 
